@@ -11,5 +11,35 @@ config_version=5
 [application]
 
 config/name="ProtoLuna"
+run/main_scene="res://Scenes/level_root.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[input]
+
+ui_pause={
+"deadzone": 0.5,
+"events": []
+}
+ui_debug_fastforward={
+"deadzone": 0.5,
+"events": []
+}
+ui_debug_add_resource={
+"deadzone": 0.5,
+"events": []
+}
+place_turret={
+"deadzone": 0.5,
+"events": []
+}
+place_collector={
+"deadzone": 0.5,
+"events": []
+}

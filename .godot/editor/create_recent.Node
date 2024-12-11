@@ -1,5 +1,6 @@
 AnimationPlayer
+Node2D
 Sprite2D
+Node
 Camera2D
 TileMapLayer
-Node2D

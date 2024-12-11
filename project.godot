@@ -43,3 +43,7 @@ place_collector={
 "deadzone": 0.5,
 "events": []
 }
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

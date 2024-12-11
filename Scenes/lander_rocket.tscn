@@ -1,83 +1,526 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkvhrc0k7ps7n"]
+[gd_scene load_steps=22 format=3 uid="uid://dkvhrc0k7ps7n"]
 
-[ext_resource type="Texture2D" uid="uid://c2qb7vs53c4re" path="res://Assets/Rocket.png" id="1_1nqwh"]
 [ext_resource type="Script" path="res://Scenes/lander_rocket.gd" id="1_vlc08"]
+[ext_resource type="Texture2D" uid="uid://4bjjyvsircw" path="res://Assets/Sprites/Rocket/LegUpper.png" id="2_14yab"]
+[ext_resource type="Texture2D" uid="uid://d0uc1o3w5ncs0" path="res://Assets/Sprites/Rocket/LegLower.png" id="3_ihslk"]
+[ext_resource type="Texture2D" uid="uid://5a1f1k77xa38" path="res://Assets/Sprites/Rocket/RocketFin.png" id="4_3cwv7"]
+[ext_resource type="Texture2D" uid="uid://cyphtewsll6vy" path="res://Assets/Sprites/Rocket/RocketBody1.png" id="5_kvbfo"]
+[ext_resource type="Texture2D" uid="uid://dud2lkn66xhni" path="res://Assets/Sprites/Rocket/RocketEngine.png" id="6_uwvt7"]
+[ext_resource type="Texture2D" uid="uid://brvx40cbwpkii" path="res://Assets/Sprites/Rocket/Flame.png" id="7_6jin5"]
 
-[sub_resource type="Animation" id="Animation_8dguh"]
+[sub_resource type="Animation" id="Animation_43oeq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Rocket_Sprites/Flame:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/Flame:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 19)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/Flame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_ltamf"]
-resource_name = "Repack"
-length = 2.0
-step = 0.05
+[sub_resource type="Animation" id="Animation_fr8ko"]
+resource_name = "off"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Rocket_Sprites/Flame:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_43bmv"]
-resource_name = "Deploy"
-length = 2.0
-step = 0.05
+[sub_resource type="Animation" id="Animation_rsl7s"]
+resource_name = "thrusting"
+length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Rocket_Sprites/Flame:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(1, 1), Vector2(1.5, 0.75), Vector2(1, 1), Vector2(0.75, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/Flame:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 19), Vector2(0, 22), Vector2(0, 19), Vector2(0, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/Flame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_wjsgt"]
-resource_name = "Landing"
-step = 0.05
-
-[sub_resource type="Animation" id="Animation_yob5v"]
-resource_name = "Liftoff"
-step = 0.05
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_togg6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3bwx"]
 _data = {
-"Deploy": SubResource("Animation_43bmv"),
-"Landing": SubResource("Animation_wjsgt"),
-"Liftoff": SubResource("Animation_yob5v"),
-"RESET": SubResource("Animation_8dguh"),
-"Repack": SubResource("Animation_ltamf")
+"RESET": SubResource("Animation_43oeq"),
+"off": SubResource("Animation_fr8ko"),
+"thrusting": SubResource("Animation_rsl7s")
+}
+
+[sub_resource type="Animation" id="Animation_gcj2q"]
+resource_name = "deploy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/FinRight:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0472, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/FinLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0472, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/FinRight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket_Sprites/FinLeft:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qxbnh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/FinRight:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/FinLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/FinRight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket_Sprites/FinLeft:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5s6am"]
+resource_name = "retract"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/FinRight:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0472]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/FinLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.0472]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/FinRight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket_Sprites/FinLeft:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7aom8"]
+_data = {
+"RESET": SubResource("Animation_qxbnh"),
+"deploy": SubResource("Animation_gcj2q"),
+"retract": SubResource("Animation_5s6am")
+}
+
+[sub_resource type="Animation" id="Animation_jcdxi"]
+resource_name = "deploy"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/LegUpperLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.79253, 1.39626, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/LegUpperLeft/LegLowerLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-2.79253, -1.39626, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/LegUpperRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-2.79253, -1.39626, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket_Sprites/LegUpperRight/LegLowerRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.79253, 1.39626, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0wm1b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/LegUpperLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.79253]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/LegUpperLeft/LegLowerLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.79253]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket_Sprites/LegUpperRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.79253]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket_Sprites/LegUpperRight/LegLowerRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.79253]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06sna"]
+_data = {
+"RESET": SubResource("Animation_0wm1b"),
+"deploy": SubResource("Animation_jcdxi")
+}
+
+[sub_resource type="Animation" id="Animation_6nydi"]
+resource_name = "deploy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/BodyLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/BodyRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_tmwta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket_Sprites/BodyLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket_Sprites/BodyRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ra1a4"]
+_data = {
+"RESET": SubResource("Animation_tmwta"),
+"deploy": SubResource("Animation_6nydi")
 }
 
 [node name="LanderRocket" type="Node2D"]
 script = ExtResource("1_vlc08")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-texture = ExtResource("1_1nqwh")
+[node name="Rocket_Sprites" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="LegUpperLeft" type="Sprite2D" parent="Rocket_Sprites"]
+position = Vector2(-9, -5)
+rotation = 2.79253
+texture = ExtResource("2_14yab")
+offset = Vector2(-6, 2)
+
+[node name="LegLowerLeft" type="Sprite2D" parent="Rocket_Sprites/LegUpperLeft"]
+position = Vector2(-10, 6)
+rotation = -2.79253
+texture = ExtResource("3_ihslk")
+offset = Vector2(-2, 5)
+
+[node name="LegUpperRight" type="Sprite2D" parent="Rocket_Sprites"]
+position = Vector2(9, -5)
+rotation = -2.79253
+texture = ExtResource("2_14yab")
+offset = Vector2(6, 2)
+flip_h = true
+
+[node name="LegLowerRight" type="Sprite2D" parent="Rocket_Sprites/LegUpperRight"]
+position = Vector2(10, 6)
+rotation = 2.79253
+texture = ExtResource("3_ihslk")
+offset = Vector2(2, 5)
+flip_h = true
+
+[node name="Flame" type="Sprite2D" parent="Rocket_Sprites"]
+texture = ExtResource("7_6jin5")
+offset = Vector2(0, 19)
+flip_h = true
+
+[node name="Nozzle" type="Sprite2D" parent="Rocket_Sprites"]
+texture = ExtResource("6_uwvt7")
+offset = Vector2(0, 5)
+flip_h = true
+
+[node name="FinLeft" type="Sprite2D" parent="Rocket_Sprites"]
+position = Vector2(-16, -32)
+texture = ExtResource("4_3cwv7")
+offset = Vector2(-7, 10.5)
+
+[node name="BodyLeft" type="Sprite2D" parent="Rocket_Sprites"]
+position = Vector2(-8, -1)
+texture = ExtResource("5_kvbfo")
+offset = Vector2(-1.5, -54)
+
+[node name="FinRight" type="Sprite2D" parent="Rocket_Sprites"]
+position = Vector2(16, -32)
+texture = ExtResource("4_3cwv7")
+offset = Vector2(7, 10.5)
+flip_h = true
+
+[node name="BodyRight" type="Sprite2D" parent="Rocket_Sprites"]
+position = Vector2(8, -1)
+texture = ExtResource("5_kvbfo")
+offset = Vector2(1.5, -54)
+flip_h = true
+
+[node name="AnimationThruster" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togg6")
+"": SubResource("AnimationLibrary_o3bwx")
 }
-autoplay = "RESET"
+
+[node name="AnimationFins" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7aom8")
+}
+
+[node name="AnimationLegs" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_06sna")
+}
+
+[node name="AnimationBody" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ra1a4")
+}

@@ -71,8 +71,7 @@ tile_set = SubResource("TileSet_0y7ew")
 position = Vector2(0, 362)
 
 [node name="LanderRocket" parent="." instance=ExtResource("2_6omfv")]
-position = Vector2(0, 640)
-deploy_position = Vector2(0, 640)
+position = Vector2(0, 624)
+deploy_position = Vector2(0, 624)
 start_position = Vector2(0, -128)
-landing_speed = 50.0
-deceleration = 0.025
+landing_speed = 15.0

@@ -1,0 +1,407 @@
+[gd_scene load_steps=19 format=3 uid="uid://cra6486iqvwpe"]
+
+[ext_resource type="Texture2D" uid="uid://b0vgdvyeu2mbd" path="res://Assets/Sprites/Buildings/Hq/HQLeftBLD.png" id="1_gx7fi"]
+[ext_resource type="Script" path="res://Buildings/HQ/deploy_hq_node.gd" id="1_o4fgn"]
+[ext_resource type="Texture2D" uid="uid://duwa0l8d2yrts" path="res://Assets/Sprites/Buildings/Hq/HQLeftGadgets.png" id="2_73k6o"]
+[ext_resource type="Texture2D" uid="uid://j5687mde517n" path="res://Assets/Sprites/Buildings/Hq/Pad.png" id="2_ghryh"]
+[ext_resource type="PackedScene" uid="uid://cuktkt2a5w5md" path="res://Buildings/HQ/bld_hq.tscn" id="2_k3nca"]
+[ext_resource type="Texture2D" uid="uid://dpq8hc6183hk7" path="res://Assets/Sprites/Buildings/Hq/HQRightBLD.png" id="3_o7cn8"]
+[ext_resource type="Texture2D" uid="uid://bpkf8kxahsykj" path="res://Assets/Sprites/Buildings/Hq/HQRightGadgets.png" id="4_p6sab"]
+[ext_resource type="Texture2D" uid="uid://bpkwfdg5sbrk0" path="res://Assets/Sprites/Buildings/Hq/HqSkirt.png" id="5_0bdnq"]
+[ext_resource type="Texture2D" uid="uid://bieqj57tqx8c6" path="res://Assets/Sprites/Buildings/Hq/HQTower.png" id="6_y6t77"]
+
+[sub_resource type="Animation" id="Animation_3asjv"]
+resource_name = "Depoyed"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQLeftBldSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/HQLeftGadgetsSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/HQRightBldSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/HQRightGadgetsSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/HQSkirtSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/HQTowerSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c8yy3"]
+resource_name = "HQGadgetsDeploy"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQLeftGadgetsSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/HQRightGadgetsSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j8skw"]
+resource_name = "HQLeftBldDeploy"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQLeftBldSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ntn4b"]
+resource_name = "HQPadDeploy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQPadSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.0944, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/HQPadSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/HQPadSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tw34w"]
+resource_name = "HQRightBLDDeploy"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQRightBldSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4xr5j"]
+resource_name = "HQSkirtDeploy"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQSkirtSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_76ef5"]
+resource_name = "HQTowerDeploy"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQTowerSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wi5oe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/HQLeftBldSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/HQLeftGadgetsSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/HQRightBldSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/HQRightGadgetsSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/HQSkirtSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/HQTowerSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/HQPadSprite:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.0944]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/HQPadSprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprites/HQPadSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndd8n"]
+_data = {
+"Depoyed": SubResource("Animation_3asjv"),
+"HQGadgetsDeploy": SubResource("Animation_c8yy3"),
+"HQLeftBldDeploy": SubResource("Animation_j8skw"),
+"HQPadDeploy": SubResource("Animation_ntn4b"),
+"HQRightBLDDeploy": SubResource("Animation_tw34w"),
+"HQSkirtDeploy": SubResource("Animation_4xr5j"),
+"HQTowerDeploy": SubResource("Animation_76ef5"),
+"RESET": SubResource("Animation_wi5oe")
+}
+
+[node name="HQDeployNode" type="Node2D"]
+script = ExtResource("1_o4fgn")
+deploy_scene = ExtResource("2_k3nca")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ndd8n")
+}
+autoplay = "RESET"
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="HQPadSprite" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(130, 0)
+rotation = -2.0944
+scale = Vector2(0.5, 1)
+texture = ExtResource("2_ghryh")
+offset = Vector2(58, -2)
+
+[node name="HQLeftBldSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(-68.5, -26)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("1_gx7fi")
+offset = Vector2(2.5, -42)
+
+[node name="HQLeftGadgetsSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(-69.5, -110)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("2_73k6o")
+offset = Vector2(0, -16.5)
+
+[node name="HQRightBldSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(46.5, -26)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("3_o7cn8")
+offset = Vector2(0, -24.5)
+
+[node name="HQRightGadgetsSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(16.5, -75)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("4_p6sab")
+offset = Vector2(0, -10)
+
+[node name="HQSkirtSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(5.5, -26)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("5_0bdnq")
+offset = Vector2(0, 13.5)
+
+[node name="HQTowerSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(89.5, -75)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("6_y6t77")
+offset = Vector2(0, -66.5)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://cr2hxiqd6ahp2"]
+[gd_scene load_steps=6 format=4 uid="uid://cr2hxiqd6ahp2"]
 
 [ext_resource type="Texture2D" uid="uid://c7dvu3s2os5ao" path="res://Assets/default_tiles.png" id="1_u6dds"]
-[ext_resource type="PackedScene" uid="uid://dkvhrc0k7ps7n" path="res://Scenes/lander_rocket.tscn" id="2_6omfv"]
+[ext_resource type="PackedScene" uid="uid://dkvhrc0k7ps7n" path="res://Units/lander_rocket.tscn" id="2_6omfv"]
+[ext_resource type="PackedScene" uid="uid://cra6486iqvwpe" path="res://Buildings/HQ/deploy_hq_node.tscn" id="3_o82il"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_af27v"]
 texture = ExtResource("1_u6dds")
@@ -70,8 +71,12 @@ tile_set = SubResource("TileSet_0y7ew")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 362)
 
-[node name="LanderRocket" parent="." instance=ExtResource("2_6omfv")]
-position = Vector2(0, 624)
-deploy_position = Vector2(0, 624)
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="LanderRocket" parent="Buildings" instance=ExtResource("2_6omfv")]
+position = Vector2(0, 640)
+deploy_scene = ExtResource("3_o82il")
+deploy_position = Vector2(0, 640)
 start_position = Vector2(0, -128)
-landing_speed = 15.0
+landing_speed = 75.0
+deceleration = 0.01

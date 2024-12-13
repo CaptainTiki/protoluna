@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dam0hqx0s55kb"]
+
+[ext_resource type="Shader" path="res://Assets/highlight_shader.gdshader" id="1_yvwix"]
+
+[resource]
+shader = ExtResource("1_yvwix")
+shader_parameter/highlight_color = Color(1, 1, 0.5, 1)
+shader_parameter/glow_strength = 0.5

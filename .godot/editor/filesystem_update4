@@ -1,3 +1,13 @@
 res://Scenes/level_root.tscn
 res://Scenes/lander_rocket.tscn
-res://Scenes/lander_rocket.gd
+res://Scenes/hq_deploy_node.tscn
+res://Scenes/hq_deploy_node.gd
+res://Scenes/bld_hq.tscn
+res://Buildings/bld_hq.tscn
+res://Buildings/HQ/bld_hq.tscn
+res://Units/lander_rocket.tscn
+res://Buildings/HQ/bld_hq.gd
+res://Buildings/HQ/deploy_hq_node.tscn
+res://Buildings/HQ/deploy_hq_node.gd
+res://Assets/highlight_shader_material.tres
+res://Assets/highlight_shader.gdshader

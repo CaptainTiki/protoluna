@@ -59,7 +59,7 @@ func play_next_stage() -> void:
 			complete_deployment()
 			pass
 
-func _on_animation_deploys_animation_finished(anim_name: StringName) -> void:
+func _on_animation_deploys_animation_finished(_anim_name: StringName) -> void:
 		if landing == false:
 			timer.start(0.1)
 

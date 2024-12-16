@@ -24,12 +24,13 @@ func finish_deployment() -> void:
 	if animation_player.is_playing() == false:
 		if deploy_scene:
 			var building : Node2D = deploy_scene.instantiate()
+			building.name = "HQ_Building"
 			get_parent().add_child(building)
 			building.position = self.position
 		queue_free()
 	pass
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	timer.start(0.25) #wait time until starting a new animation - so it doesn't just flow 1 to another
 
 func _on_timer_timeout() -> void:

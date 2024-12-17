@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxen70l0wh6ye"]
+
+[ext_resource type="Script" path="res://Scenes/text_label_popup.gd" id="1_ayqtu"]
+
+[node name="TextLabelPopupNode" type="Node2D"]
+script = ExtResource("1_ayqtu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -120.0
+offset_top = -240.0
+offset_right = 120.0
+offset_bottom = -200.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.611765)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.427451)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]press a button to buy things, and we need to wrap[/center]"
+scroll_active = false
+shortcut_keys_enabled = false

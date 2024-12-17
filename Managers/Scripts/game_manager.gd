@@ -3,6 +3,8 @@ class_name Game_Manager extends Node
 var playerDronescene : PackedScene = preload("res://Units/player_drone.tscn")
 var player : Player_Drone
 
+var interaction_speed : float = 1.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	

@@ -31,10 +31,12 @@ func _ready():
 func _process(delta):
 	if filling:
 		progress += GameManager.interaction_speed * delta
-		print(progress)
 		if progress >= 1:
 			progress = 0
 			progress_bar.value += 1
+		if progress_bar.value >= progress_bar.max_value:
+			parent_blding_node.on_resource_filled() #tell our parent we're full
+			progress_bar.value = 0 #reset progress down to empty
 		pass
 	pass
 

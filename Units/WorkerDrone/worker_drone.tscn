@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://bibl2spaf5lnm"]
+
+[ext_resource type="Script" path="res://Units/WorkerDrone/worker_drone.gd" id="1_jgtm0"]
+[ext_resource type="Texture2D" uid="uid://bognrv2poasve" path="res://Assets/Sprites/Vehicles/WorkerDrone/WorkerDrone.png" id="2_bxlbm"]
+[ext_resource type="Script" path="res://Units/state_machine.gd" id="3_wkit2"]
+[ext_resource type="PackedScene" uid="uid://bubu0n0kp0fk8" path="res://Units/wander_state_node.tscn" id="4_nhe2b"]
+[ext_resource type="Script" path="res://Units/WorkerDrone/idle_state_node.gd" id="4_yumhs"]
+
+[sub_resource type="Animation" id="Animation_wcfop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wog31"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_nkxb2"]
+resource_name = "wander"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8e0g"]
+_data = {
+"RESET": SubResource("Animation_wcfop"),
+"idle": SubResource("Animation_wog31"),
+"wander": SubResource("Animation_nkxb2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v4jw1"]
+radius = 8.0
+
+[node name="WorkerDrone" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jgtm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_bxlbm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f8e0g")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_v4jw1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_wkit2")
+state = NodePath("IdleStateNode")
+
+[node name="IdleStateNode" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state")]
+script = ExtResource("4_yumhs")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+exit_state = NodePath("../WanderStateNode")
+
+[node name="WanderStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("4_nhe2b")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+animation_name = "default"
+exit_state = NodePath("../IdleStateNode")

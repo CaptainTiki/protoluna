@@ -15,7 +15,7 @@ func _ready():
 	interaction_zone.player_exited.connect(_hide_label)
 	pass 
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _display_label() -> void:

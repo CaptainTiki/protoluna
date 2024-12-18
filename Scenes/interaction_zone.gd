@@ -30,7 +30,7 @@ func _on_body_exited(body) -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if player_in_zone and Input.is_action_just_pressed("interact"):
 		interaction_triggered.emit()
 	if player_in_zone and Input.is_action_just_released("interact"):

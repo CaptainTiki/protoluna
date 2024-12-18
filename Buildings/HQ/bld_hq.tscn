@@ -57,3 +57,4 @@ offset = Vector2(0, -66.5)
 [node name="ResourceFillBar" parent="." instance=ExtResource("3_cjvoq")]
 
 [node name="TextLabelPopupNode" parent="." instance=ExtResource("4_7k0bn")]
+display_text = "[center]HeadQuarters[/center]"

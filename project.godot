@@ -63,6 +63,12 @@ interact={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Friendly Units"
+2d_physics/layer_3="Friendly Buildings"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

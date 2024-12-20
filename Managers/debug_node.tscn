@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdcq51nmea12x"]
+
+[ext_resource type="Script" path="res://Utilities/debug_node.gd" id="1_ko7qj"]
+
+[node name="DebugNode" type="Node"]
+script = ExtResource("1_ko7qj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -637.5
+offset_right = 637.5
+offset_bottom = 343.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 396.0
+offset_bottom = 62.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = -2.5
+offset_top = 280.0
+offset_right = 393.5
+offset_bottom = 342.0

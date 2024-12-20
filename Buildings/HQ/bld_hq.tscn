@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Buildings/HQ/bld_hq.gd" id="1_vtrm6"]
 [ext_resource type="Texture2D" uid="uid://j5687mde517n" path="res://Assets/Sprites/Buildings/Hq/Pad.png" id="2_4yser"]
-[ext_resource type="PackedScene" uid="uid://xm5cy8033513" path="res://Scenes/interaction_zone.tscn" id="2_b8jba"]
-[ext_resource type="PackedScene" uid="uid://mlbcx8sgmkff" path="res://Scenes/resource_fill_bar.tscn" id="3_cjvoq"]
+[ext_resource type="PackedScene" uid="uid://xm5cy8033513" path="res://Utilities/interaction_zone.tscn" id="2_b8jba"]
+[ext_resource type="PackedScene" uid="uid://mlbcx8sgmkff" path="res://Utilities/resource_fill_bar.tscn" id="3_cjvoq"]
 [ext_resource type="Texture2D" uid="uid://b0vgdvyeu2mbd" path="res://Assets/Sprites/Buildings/Hq/HQLeftBLD.png" id="3_iqojh"]
-[ext_resource type="PackedScene" uid="uid://dxen70l0wh6ye" path="res://Scenes/text_label_popup.tscn" id="4_7k0bn"]
+[ext_resource type="PackedScene" uid="uid://dxen70l0wh6ye" path="res://Utilities/text_label_popup.tscn" id="4_7k0bn"]
 [ext_resource type="Texture2D" uid="uid://duwa0l8d2yrts" path="res://Assets/Sprites/Buildings/Hq/HQLeftGadgets.png" id="4_gfxh8"]
 [ext_resource type="Texture2D" uid="uid://dpq8hc6183hk7" path="res://Assets/Sprites/Buildings/Hq/HQRightBLD.png" id="5_1it30"]
 [ext_resource type="Texture2D" uid="uid://bpkf8kxahsykj" path="res://Assets/Sprites/Buildings/Hq/HQRightGadgets.png" id="6_cvxw7"]
@@ -57,4 +57,3 @@ offset = Vector2(0, -66.5)
 [node name="ResourceFillBar" parent="." instance=ExtResource("3_cjvoq")]
 
 [node name="TextLabelPopupNode" parent="." instance=ExtResource("4_7k0bn")]
-display_text = "[center]HeadQuarters[/center]"

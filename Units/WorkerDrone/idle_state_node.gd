@@ -21,7 +21,8 @@ func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
 	animator.play(animation_name)
-	actor.velocity = Vector2.ZERO
+	actor.is_moving = false
+	actor.move_direction = 0
 	timer.wait_time = randf_range(idle_time_min, idle_time_max)
 	timer.one_shot = true
 	timer.start()

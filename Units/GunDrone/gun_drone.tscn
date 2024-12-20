@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://b561u2mta10un"]
+
+[ext_resource type="Script" path="res://Units/GunDrone/gun_drone.gd" id="1_k53dl"]
+[ext_resource type="Texture2D" uid="uid://b6frgrrqek6cr" path="res://Assets/Sprites/Vehicles/GunDrone/GunDrone.png" id="2_8b5mv"]
+[ext_resource type="Script" path="res://Units/StateMachine/state_machine.gd" id="3_72xbv"]
+[ext_resource type="Texture2D" uid="uid://brjwyxi1ime1n" path="res://Assets/Sprites/Vehicles/GunDrone/Gun.png" id="3_jdt2i"]
+[ext_resource type="Script" path="res://Units/WorkerDrone/idle_state_node.gd" id="4_uk8cs"]
+[ext_resource type="PackedScene" uid="uid://bubu0n0kp0fk8" path="res://Units/StateMachine/wander_state_node.tscn" id="5_2nqk5"]
+
+[sub_resource type="Animation" id="Animation_wcfop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wog31"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nkxb2"]
+resource_name = "wander"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8e0g"]
+_data = {
+"RESET": SubResource("Animation_wcfop"),
+"idle": SubResource("Animation_wog31"),
+"wander": SubResource("Animation_nkxb2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v4jw1"]
+radius = 8.0
+
+[node name="GunDrone" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_k53dl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="BodySprite" type="Sprite2D" parent="Sprite"]
+position = Vector2(0, -16)
+texture = ExtResource("2_8b5mv")
+
+[node name="GunSprite" type="Sprite2D" parent="Sprite"]
+position = Vector2(13, -25)
+rotation = -0.298786
+texture = ExtResource("3_jdt2i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f8e0g")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_v4jw1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("3_72xbv")
+current_state = NodePath("IdleStateNode")
+
+[node name="IdleStateNode" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state")]
+script = ExtResource("4_uk8cs")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+exit_state = NodePath("../WanderStateNode")
+
+[node name="WanderStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("5_2nqk5")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+exit_state = NodePath("../IdleStateNode")

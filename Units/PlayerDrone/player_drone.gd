@@ -14,6 +14,8 @@ var facingright : bool= true
 func _ready()-> void:
 	animation_player.play("Flame_On")
 
+	
+
 func _process(_delta: float) -> void:
 	if velocity.x > 0 and facingright:
 		drone_sprite.flip_h = false  # Ensure facing right.

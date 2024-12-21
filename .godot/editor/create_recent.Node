@@ -1,6 +1,10 @@
+PointLight2D
+CanvasModulate
+VBoxContainer
+Timer
+Node
 Sprite2D
 Node2D
-Node
 RichTextLabel
 CollisionShape2D
 TextLabelPopup
@@ -9,6 +13,3 @@ InteractionZone
 Panel
 Label
 CanvasLayer
-StateNode
-Timer
-CharacterBody2D

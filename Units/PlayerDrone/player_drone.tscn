@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://scipanja7ied"]
+[gd_scene load_steps=10 format=3 uid="uid://scipanja7ied"]
 
 [ext_resource type="Script" path="res://Units/PlayerDrone/player_drone.gd" id="1_c4jbx"]
 [ext_resource type="Texture2D" uid="uid://duhf62rrkm0g2" path="res://Assets/Sprites/Vehicles/PlayerDrone/Drone.png" id="2_nydc6"]
 [ext_resource type="Texture2D" uid="uid://bf3yv4x2a31b7" path="res://Assets/Sprites/Vehicles/PlayerDrone/DroneFlame.png" id="3_50b5y"]
+[ext_resource type="PackedScene" uid="uid://cx7hoin0moo2f" path="res://Units/unit_light.tscn" id="4_8jrnc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5l1c2"]
 radius = 9.0
@@ -177,3 +178,5 @@ visible = false
 position = Vector2(37, -2)
 texture = ExtResource("3_50b5y")
 offset = Vector2(0, 4)
+
+[node name="UnitLight" parent="." instance=ExtResource("4_8jrnc")]

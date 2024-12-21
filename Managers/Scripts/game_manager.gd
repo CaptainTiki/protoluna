@@ -26,7 +26,8 @@ func get_player_position() -> Vector2:
 
 func spawnPlayer(pos: Vector2 = Vector2(192,624)) -> void:
 	player = playerDronescene.instantiate()
-	self.get_parent().add_child(player)
+	var node = get_node("../LevelRoot/Units")
+	node.add_child(player)
 	player.position = pos
 	pass
 
@@ -35,3 +36,8 @@ func add_debug_info(key: String, value: String) -> void:
 
 func remove_debug_info(key: String) -> void:
 	debug_node.remove_debug_info(key)
+
+func update_debug_time(is_daytime: bool, time: String) -> void:
+	debug_node.update_time(is_daytime, time)
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

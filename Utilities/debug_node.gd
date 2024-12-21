@@ -2,7 +2,9 @@ class_name Debug_Node extends Node
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var label: Label = $CanvasLayer/Panel/Label
-@onready var label_2: Label = $CanvasLayer/Panel/Label2
+
+@onready var time_label: Label = $CanvasLayer/Panel/VBoxContainer/Time
+@onready var time_label_2: Label = $CanvasLayer/Panel/VBoxContainer/Time2
 
 # Debug info (you can add more fields as needed)
 var debug_info := {}
@@ -17,7 +19,8 @@ func _process(_delta):
 		canvas_layer.visible = not canvas_layer.visible
 
 	# Update debug information
-	update_debug_canvas()
+	if canvas_layer.visible:
+		update_debug_canvas()
 
 func add_debug_info(key: String, value: String) -> void:
 	debug_info[key] = value
@@ -32,3 +35,12 @@ func update_debug_canvas():
 			for key in debug_info.keys():
 				debug_text += key + ": " + str(debug_info[key]) + "\n"
 			$CanvasLayer/Panel/Label.text = debug_text
+
+func update_time(is_daytime: bool, time: String) -> void:
+	if time_label_2 && time_label:
+		if is_daytime:
+			time_label.text = "Daytime"
+		else:
+			time_label.text = "Nighttime"
+		time_label_2.text = time 
+	pass

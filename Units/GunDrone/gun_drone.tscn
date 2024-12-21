@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b561u2mta10un"]
+[gd_scene load_steps=13 format=3 uid="uid://b561u2mta10un"]
 
 [ext_resource type="Script" path="res://Units/GunDrone/gun_drone.gd" id="1_k53dl"]
 [ext_resource type="Texture2D" uid="uid://b6frgrrqek6cr" path="res://Assets/Sprites/Vehicles/GunDrone/GunDrone.png" id="2_8b5mv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brjwyxi1ime1n" path="res://Assets/Sprites/Vehicles/GunDrone/Gun.png" id="3_jdt2i"]
 [ext_resource type="Script" path="res://Units/WorkerDrone/idle_state_node.gd" id="4_uk8cs"]
 [ext_resource type="PackedScene" uid="uid://bubu0n0kp0fk8" path="res://Units/StateMachine/wander_state_node.tscn" id="5_2nqk5"]
+[ext_resource type="PackedScene" uid="uid://cx7hoin0moo2f" path="res://Units/unit_light.tscn" id="7_5d3uw"]
 
 [sub_resource type="Animation" id="Animation_wcfop"]
 length = 0.001
@@ -103,3 +104,6 @@ exit_state = NodePath("../WanderStateNode")
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 exit_state = NodePath("../IdleStateNode")
+
+[node name="UnitLight" parent="." instance=ExtResource("7_5d3uw")]
+texture_scale = 2.0

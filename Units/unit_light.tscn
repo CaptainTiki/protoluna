@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7hoin0moo2f"]
+
+[ext_resource type="Texture2D" uid="uid://dluodwxs3xsh6" path="res://Assets/PointGradient.tres" id="1_bdqjp"]
+[ext_resource type="Script" path="res://Units/PlayerDrone/unit_light.gd" id="2_jkjg6"]
+
+[node name="UnitLight" type="PointLight2D"]
+texture = ExtResource("1_bdqjp")
+texture_scale = 3.0
+script = ExtResource("2_jkjg6")

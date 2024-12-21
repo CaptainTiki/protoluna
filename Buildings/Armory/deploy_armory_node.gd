@@ -10,7 +10,7 @@ func _ready() -> void:
 	animation_player.play("Deploy")
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if animation_player.is_playing() == false:
 		finish_deployment()
 	pass

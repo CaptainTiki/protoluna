@@ -10,8 +10,6 @@ func _process(_delta):
 		_flip_all_sprites(false)  # Ensure facing right.
 	elif velocity.x < 0 and move_direction < 0:
 		_flip_all_sprites(true) # Ensure facing left.
-	else:
-		
 		pass
 
 func _physics_process(delta):

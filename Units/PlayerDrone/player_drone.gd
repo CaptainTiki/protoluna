@@ -11,6 +11,10 @@ class_name Player_Drone extends CharacterBody2D
 var hover_timer: float = 0.0
 var facingright : bool= true
 
+func _init() -> void:
+	add_to_group("mobile")
+	add_to_group("friendly")
+
 func _ready()-> void:
 	animation_player.play("Flame_On")
 

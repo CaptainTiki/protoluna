@@ -383,5 +383,3 @@ offset = Vector2(0, -43)
 [node name="Skirt_Sprite" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("7_ta2xo")
 offset = Vector2(0, -13)
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bubu0n0kp0fk8"]
 
-[ext_resource type="Script" path="res://Units/WorkerDrone/wander_state_node.gd" id="1_rxfrv"]
+[ext_resource type="Script" path="res://Units/StateMachine/wander_state_node.gd" id="1_rxfrv"]
 
 [node name="WanderStateNode" type="Node"]
 script = ExtResource("1_rxfrv")

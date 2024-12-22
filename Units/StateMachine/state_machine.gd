@@ -8,11 +8,11 @@ func _ready():
 	pass # Replace with function body.
 
 func change_state(new_state: StateNode):
-	if current_state.state_exited.is_connected(_on_state_exited):
-		current_state.state_exited.disconnect(_on_state_exited)
+	if current_state.state_exit.is_connected(_on_state_exited):
+		current_state.state_exit.disconnect(_on_state_exited)
 	new_state._enter_state()
 	current_state = new_state
-	current_state.state_exited.connect(_on_state_exited)
+	current_state.state_exit.connect(_on_state_exited)
 	pass
 
 func _on_state_exited() -> void:

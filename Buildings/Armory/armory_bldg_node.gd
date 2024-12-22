@@ -14,7 +14,6 @@ func _init() -> void:
 	bar_offset = Vector2(-50,-220)
 
 func _ready() -> void:
-	print(action_cost)
 	pass
 
 func on_resource_filled() -> void:

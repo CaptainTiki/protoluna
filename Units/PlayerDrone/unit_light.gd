@@ -4,7 +4,7 @@ class_name UnitLight extends PointLight2D
 
 func _ready() -> void:
 	color = Color(0.8,0.8,1,1)
-	if time_manager.is_daytime: 
+	if time_manager && time_manager.is_daytime:
 		energy = 0
 	else: 
 		energy = 1
@@ -22,7 +22,6 @@ func _on_night_started() -> void:
 	pass
 
 func tween_light(target_energy: float):
-	print("Changing to energy: ", target_energy)
 	var tween = create_tween()
 	tween.tween_property(self, "energy", target_energy, 2.0)  # Smoothly transition energy over 2 seconds
 	tween.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)

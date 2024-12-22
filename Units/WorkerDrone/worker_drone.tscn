@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Units/WorkerDrone/worker_drone.gd" id="1_jgtm0"]
 [ext_resource type="Texture2D" uid="uid://bognrv2poasve" path="res://Assets/Sprites/Vehicles/WorkerDrone/WorkerDrone.png" id="2_bxlbm"]
 [ext_resource type="Script" path="res://Units/StateMachine/state_machine.gd" id="3_wkit2"]
+[ext_resource type="PackedScene" uid="uid://dpg00t6bm23ut" path="res://Units/StateMachine/idle_state_node.tscn" id="4_giibt"]
 [ext_resource type="PackedScene" uid="uid://bubu0n0kp0fk8" path="res://Units/StateMachine/wander_state_node.tscn" id="4_nhe2b"]
-[ext_resource type="Script" path="res://Units/WorkerDrone/idle_state_node.gd" id="4_yumhs"]
 [ext_resource type="PackedScene" uid="uid://cx7hoin0moo2f" path="res://Units/unit_light.tscn" id="6_bswpp"]
 
 [sub_resource type="Animation" id="Animation_wcfop"]
@@ -86,18 +86,14 @@ shape = SubResource("CapsuleShape2D_v4jw1")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_wkit2")
-current_state = NodePath("IdleStateNode")
+current_state = NodePath("")
 
-[node name="IdleStateNode" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state")]
-script = ExtResource("4_yumhs")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationPlayer")
-exit_state = NodePath("../WanderStateNode")
+[node name="IdleStateNode" parent="StateMachine" instance=ExtResource("4_giibt")]
 
 [node name="WanderStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("4_nhe2b")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
-exit_state = NodePath("../IdleStateNode")
+exit_state = NodePath("")
 
 [node name="UnitLight" parent="." instance=ExtResource("6_bswpp")]
 texture_scale = 2.0

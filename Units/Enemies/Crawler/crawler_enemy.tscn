@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3 uid="uid://2ymrdtlwsqdl"]
+
+[ext_resource type="Script" path="res://Units/Enemies/Crawler/crawler_enemy.gd" id="1_x7hsm"]
+[ext_resource type="Texture2D" uid="uid://bfhc87w87jrbt" path="res://Assets/Sprites/Enemies/Crawler/Crawler-Sheet.png" id="2_8mk7h"]
+[ext_resource type="Script" path="res://Units/StateMachine/state_machine.gd" id="4_1wf0o"]
+[ext_resource type="PackedScene" uid="uid://cg0fg20ga0hi1" path="res://Units/StateMachine/select_friendly_state_node.tscn" id="4_fhyvd"]
+[ext_resource type="PackedScene" uid="uid://dlyy7al7sq6wn" path="res://Units/StateMachine/attack_friendly_state_node.tscn" id="5_i4ayu"]
+[ext_resource type="PackedScene" uid="uid://dpg00t6bm23ut" path="res://Units/StateMachine/idle_state_node.tscn" id="6_y10q2"]
+
+[sub_resource type="Animation" id="Animation_wcfop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_m18ga"]
+resource_name = "attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 11, 12, 13, 14, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_wog31"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_4lqpk"]
+resource_name = "search"
+length = 0.5
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_nkxb2"]
+resource_name = "wander"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8e0g"]
+_data = {
+"RESET": SubResource("Animation_wcfop"),
+"attack": SubResource("Animation_m18ga"),
+"idle": SubResource("Animation_wog31"),
+"search": SubResource("Animation_4lqpk"),
+"wander": SubResource("Animation_nkxb2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v4jw1"]
+radius = 8.0
+height = 32.0
+
+[node name="Crawler" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_x7hsm")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="BodySprite" type="Sprite2D" parent="Sprite"]
+position = Vector2(0, -16)
+texture = ExtResource("2_8mk7h")
+hframes = 8
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f8e0g")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v4jw1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("4_1wf0o")
+current_state = NodePath("SelectFriendlyStateNode")
+
+[node name="SelectFriendlyStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "success_exit_state", "fail_exit_state") instance=ExtResource("4_fhyvd")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+success_exit_state = NodePath("../AttackFriendlyStateNode")
+fail_exit_state = NodePath("../IdleStateNode")
+
+[node name="AttackFriendlyStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "success_exit_state") instance=ExtResource("5_i4ayu")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+success_exit_state = NodePath("../IdleStateNode")
+
+[node name="IdleStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("6_y10q2")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+exit_state = NodePath("../SelectFriendlyStateNode")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpg00t6bm23ut"]
+
+[ext_resource type="Script" path="res://Units/StateMachine/idle_state_node.gd" id="1_rxwe5"]
+
+[node name="IdleStateNode" type="Node" node_paths=PackedStringArray("actor", "animator", "exit_state")]
+script = ExtResource("1_rxwe5")
+actor = NodePath("")
+animator = NodePath("")
+exit_state = NodePath("")

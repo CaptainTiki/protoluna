@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlyy7al7sq6wn"]
+
+[ext_resource type="Script" path="res://Units/StateMachine/attack_friendly_state_node.gd" id="1_80v0u"]
+
+[node name="AttackFriendlyStateNode" type="Node"]
+script = ExtResource("1_80v0u")

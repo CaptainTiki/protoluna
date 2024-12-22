@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://cr2hxiqd6ahp2"]
+[gd_scene load_steps=10 format=4 uid="uid://cr2hxiqd6ahp2"]
 
 [ext_resource type="Script" path="res://Managers/Scripts/game_manager.gd" id="1_fte74"]
+[ext_resource type="Script" path="res://Utilities/level_root.gd" id="1_j256c"]
 [ext_resource type="PackedScene" uid="uid://dkvhrc0k7ps7n" path="res://Units/Rocket/lander_rocket.tscn" id="2_6omfv"]
 [ext_resource type="TileSet" uid="uid://c6smkw4xpyhgb" path="res://Assets/default_tileset.tres" id="2_d7dq7"]
 [ext_resource type="PackedScene" uid="uid://egw4sysil36v" path="res://Utilities/camera_2d.tscn" id="2_vy1du"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dqyfuhyxwhm81" path="res://Buildings/Armory/deploy_armory_node.tscn" id="7_dgaf4"]
 
 [node name="LevelRoot" type="Node2D"]
+script = ExtResource("1_j256c")
 
 [node name="Managers" type="Node" parent="."]
 

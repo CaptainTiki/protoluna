@@ -68,6 +68,7 @@ radius = 8.0
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jgtm0")
+actor_cost = 4.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 
@@ -86,14 +87,17 @@ shape = SubResource("CapsuleShape2D_v4jw1")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_wkit2")
-current_state = NodePath("")
+current_state = NodePath("IdleStateNode")
 
-[node name="IdleStateNode" parent="StateMachine" instance=ExtResource("4_giibt")]
+[node name="IdleStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("4_giibt")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+exit_state = NodePath("../WanderStateNode")
 
 [node name="WanderStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("4_nhe2b")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
-exit_state = NodePath("")
+exit_state = NodePath("../IdleStateNode")
 
 [node name="UnitLight" parent="." instance=ExtResource("6_bswpp")]
 texture_scale = 2.0

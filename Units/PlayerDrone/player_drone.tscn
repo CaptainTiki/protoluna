@@ -151,6 +151,7 @@ _data = {
 
 [node name="Player_Drone" type="CharacterBody2D"]
 script = ExtResource("1_c4jbx")
+actor_cost = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)

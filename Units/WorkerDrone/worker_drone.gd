@@ -1,5 +1,9 @@
 class_name WorkerDrone extends Actor
 
+func _init():
+	super._init()
+	add_to_group("friendly")
+
 func _ready() -> void:
 	GameManager.add_debug_info(self.name, str(velocity))
 	pass

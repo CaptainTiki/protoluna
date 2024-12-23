@@ -1,4 +1,4 @@
-class_name Player_Drone extends CharacterBody2D
+class_name Player_Drone extends Actor
 
 @onready var animation_player = $AnimationPlayer
 @onready var drone_sprite: Sprite2D = $DroneSprite

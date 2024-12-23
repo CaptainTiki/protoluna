@@ -13,7 +13,8 @@ class_name SelectTargetState extends StateNode
 var exit_state : StateNode
 var timer: float = 0.5
 
-var scored_targets = {}
+var scored_targets : Dictionary = {}
+
 
 func _ready() -> void:
 	set_process(false)
@@ -51,10 +52,7 @@ func _physics_process(_delta: float) -> void:
 
 func find_target() -> void:
 	var potential_targets : Array[Node] = get_tree().get_nodes_in_group("friendly")
-	var scored_targets = {}
-	
-	print("friendlies: " + str(potential_targets.size()))
-	
+	scored_targets.clear() #make sure to clean out the last check - if we're redoing
 	for target in potential_targets:
 		if not is_instance_valid(target):
 			continue #if this is an invalid instance, skip it
@@ -63,23 +61,29 @@ func find_target() -> void:
 			continue #also dont select if its a building slot that hasn't been built yet
 		
 		var distance = actor.global_position.distance_to(target.global_position)
-		var cost = target.target_cost if target.has_method("target_cost") else 1 # defaults to 1 if not defined
-		
+		var cost = target.get_target_cost() if target.has_method("get_target_cost") else 1 # defaults to 1 if not defined
 		#scoring formula
 		var score = (1.0 / (distance + 1)) + cost  # Closer targets and higher-cost targets score higher
 		if target.is_in_group("mobile"):
 			score *= 2 
-		
-		scored_targets[target] = score
-	
-	#sort by score
-	scored_targets.keys().sort_custom(compare_scores)
+			
+		if not scored_targets.has(target):
+			scored_targets[target] = {"score": score}
 	
 	if scored_targets.size() > 0:
-		var best_target = scored_targets[0]
-		actor.attackTarget = best_target
-	pass
+		print(scored_targets)
+		#sort by score
+		scored_targets.keys().sort_custom(compare_scores)
+		print(scored_targets)
+	
+	#if scored_targets.size() > 0:
+		#var best_target = scored_targets[0]
+		#actor.attackTarget = best_target
+	
 
 func compare_scores(a, b) -> int:
-	# Compare scores in descending order
-	return scored_targets[b] - scored_targets[a]
+	if scored_targets[a]["score"] > scored_targets[b]["score"]:
+		return 1  # a comes after b
+	elif scored_targets[a]["score"] < scored_targets[b]["score"]:
+		return -1  # a comes before b
+	return 0  # a and b are equal

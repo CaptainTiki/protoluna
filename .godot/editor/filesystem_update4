@@ -7,4 +7,9 @@ res://Units/Enemies/Crawler/crawler_enemy.tscn
 res://Buildings/building.tscn
 res://Buildings/HQ/bld_hq.tscn
 res://Buildings/Armory/armory_bldg_node.tscn
-res://Units/actor.gd
+res://Units/WorkerDrone/worker_drone.tscn
+res://Units/GunDrone/gun_drone.gd
+res://Units/WorkerDrone/worker_drone.gd
+res://Units/PlayerDrone/player_drone.gd
+res://Units/GunDrone/gun_drone.tscn
+res://Units/PlayerDrone/player_drone.tscn

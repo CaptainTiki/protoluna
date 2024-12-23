@@ -77,7 +77,6 @@ func complete_deployment() -> void:
 		get_parent().add_child(building)
 		building.position = self.position
 	else:
-		print("Error deploying building, new node not assigned")
 		queue_free()
 	pass
 	

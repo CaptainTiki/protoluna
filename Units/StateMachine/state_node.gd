@@ -2,7 +2,7 @@ class_name StateNode extends Node
 
 @warning_ignore("unused_signal")
 
-signal state_exit
+signal state_exit_signal
 
 func _enter_state() -> void:
 	pass

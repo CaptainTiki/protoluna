@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://2ymrdtlwsqdl"]
+[gd_scene load_steps=15 format=3 uid="uid://2ymrdtlwsqdl"]
 
 [ext_resource type="Script" path="res://Units/Enemies/Crawler/crawler_enemy.gd" id="1_x7hsm"]
 [ext_resource type="Texture2D" uid="uid://bfhc87w87jrbt" path="res://Assets/Sprites/Enemies/Crawler/Crawler-Sheet.png" id="2_8mk7h"]
 [ext_resource type="Script" path="res://Units/StateMachine/state_machine.gd" id="4_1wf0o"]
 [ext_resource type="PackedScene" uid="uid://cg0fg20ga0hi1" path="res://Units/StateMachine/select_friendly_state_node.tscn" id="4_fhyvd"]
-[ext_resource type="PackedScene" uid="uid://dlyy7al7sq6wn" path="res://Units/StateMachine/attack_friendly_state_node.tscn" id="5_i4ayu"]
+[ext_resource type="PackedScene" uid="uid://d4i263g7tkq1k" path="res://Units/StateMachine/move_to_target_state_node.tscn" id="5_i4ayu"]
+[ext_resource type="PackedScene" uid="uid://ucxd4lnmxbtx" path="res://Units/StateMachine/attack_friendly_state_node.tscn" id="6_70oq2"]
 [ext_resource type="PackedScene" uid="uid://dpg00t6bm23ut" path="res://Units/StateMachine/idle_state_node.tscn" id="6_y10q2"]
 
 [sub_resource type="Animation" id="Animation_wcfop"]
@@ -109,6 +110,9 @@ height = 32.0
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_x7hsm")
+max_speed = 100.0
+acceleration = 50.0
+attack_range = 64.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 
@@ -135,15 +139,23 @@ current_state = NodePath("SelectFriendlyStateNode")
 [node name="SelectFriendlyStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "success_exit_state", "fail_exit_state") instance=ExtResource("4_fhyvd")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
-success_exit_state = NodePath("../AttackFriendlyStateNode")
+success_exit_state = NodePath("../MoveToTargetStateNode")
 fail_exit_state = NodePath("../IdleStateNode")
 
-[node name="AttackFriendlyStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "success_exit_state") instance=ExtResource("5_i4ayu")]
+[node name="AttackFriendlyStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("6_70oq2")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
-success_exit_state = NodePath("../IdleStateNode")
+exit_state = NodePath("../SelectFriendlyStateNode")
 
 [node name="IdleStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("6_y10q2")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 exit_state = NodePath("../SelectFriendlyStateNode")
+
+[node name="MoveToTargetStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "success_exit_state", "fail_exit_state") instance=ExtResource("5_i4ayu")]
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+track_target_time_min = 2.0
+track_target_time_max = 10.0
+success_exit_state = NodePath("../AttackFriendlyStateNode")
+fail_exit_state = NodePath("../SelectFriendlyStateNode")

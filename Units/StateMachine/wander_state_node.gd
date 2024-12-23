@@ -28,7 +28,7 @@ func _enter_state() -> void:
 func _exit_state() -> void:
 	set_process(false)
 	set_physics_process(false)
-	state_exit.emit()
+	state_exit_signal.emit()
 	#if exit_state:
 		#state_machine.change_state(exit_state)
 	pass

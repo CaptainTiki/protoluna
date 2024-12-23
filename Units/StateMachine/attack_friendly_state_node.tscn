@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlyy7al7sq6wn"]
+[gd_scene load_steps=2 format=3 uid="uid://ucxd4lnmxbtx"]
 
-[ext_resource type="Script" path="res://Units/StateMachine/attack_friendly_state_node.gd" id="1_80v0u"]
+[ext_resource type="Script" path="res://Units/Enemies/Crawler/attack_friendly_state_node.gd" id="1_vp5ut"]
 
 [node name="AttackFriendlyStateNode" type="Node"]
-script = ExtResource("1_80v0u")
+script = ExtResource("1_vp5ut")

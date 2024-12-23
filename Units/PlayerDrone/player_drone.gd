@@ -1,7 +1,6 @@
 class_name Player_Drone extends Actor
 
 @onready var animation_player = $AnimationPlayer
-@onready var drone_sprite: Sprite2D = $DroneSprite
 
 @export var speed: float = 200.0 #speed of the drone movement
 @export var hover_height: float = 600.0
@@ -18,13 +17,11 @@ func _init() -> void:
 func _ready()-> void:
 	animation_player.play("Flame_On")
 
-	
-
 func _process(_delta: float) -> void:
 	if velocity.x > 0 and facingright:
-		drone_sprite.flip_h = false  # Ensure facing right.
+		sprite.flip_h = false  # Ensure facing right.
 	elif velocity.x < 0 and !facingright:
-		drone_sprite.flip_h = true # Ensure facing left.
+		sprite.flip_h = true # Ensure facing left.
 
 func _physics_process(delta):
 	if position.y > 624:

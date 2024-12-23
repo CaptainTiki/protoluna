@@ -32,7 +32,7 @@ func _enter_state() -> void:
 func _exit_state() -> void:
 	set_process(false)
 	set_physics_process(false)
-	state_exit.emit()
+	state_exit_signal.emit()
 	pass
 
 func _process(delta) -> void:
@@ -71,15 +71,11 @@ func find_target() -> void:
 			scored_targets[target] = {"score": score}
 	
 	if scored_targets.size() > 0:
-		print(scored_targets)
 		#sort by score
-		scored_targets.keys().sort_custom(compare_scores)
-		print(scored_targets)
-	
-	#if scored_targets.size() > 0:
-		#var best_target = scored_targets[0]
-		#actor.attackTarget = best_target
-	
+		var sorted_keys = scored_targets.keys()
+		sorted_keys.sort_custom(compare_scores)
+		actor.attackTarget = sorted_keys[0]
+
 
 func compare_scores(a, b) -> int:
 	if scored_targets[a]["score"] > scored_targets[b]["score"]:

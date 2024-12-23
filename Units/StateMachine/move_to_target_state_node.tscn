@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4i263g7tkq1k"]
+
+[ext_resource type="Script" path="res://Units/StateMachine/move_to_target_state_node.gd" id="1_80v0u"]
+
+[node name="MoveToTargetStateNode" type="Node"]
+script = ExtResource("1_80v0u")

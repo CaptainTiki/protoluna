@@ -28,7 +28,7 @@ func _enter_state() -> void:
 	timer.start()
 
 func _exit_state() -> void:
-	state_exit.emit()
+	state_exit_signal.emit()
 	set_process(false)
 	set_physics_process(false)
 	#if exit_state:

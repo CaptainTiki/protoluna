@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7dvu3s2os5ao"
-path="res://.godot/imported/default_tiles.png-cfe107c0031e3ef9b492c0eb6c262b6e.ctex"
+uid="uid://bggddghxxfovl"
+path="res://.godot/imported/lunar_surface_tile.png-8c33d3979ef576eaf61bbf381c8de4cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/default_tiles.png"
-dest_files=["res://.godot/imported/default_tiles.png-cfe107c0031e3ef9b492c0eb6c262b6e.ctex"]
+source_file="res://Assets/lunar_surface_tile.png"
+dest_files=["res://.godot/imported/lunar_surface_tile.png-8c33d3979ef576eaf61bbf381c8de4cb.ctex"]
 
 [params]
 

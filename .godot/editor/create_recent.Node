@@ -1,7 +1,8 @@
+CollisionShape2D
+Area2D
 Node
 Sprite2D
 Node2D
-CollisionShape2D
 CharacterBody2D
 Timer
 PointLight2D
@@ -11,4 +12,3 @@ RichTextLabel
 TextLabelPopup
 ResourceFillBar
 InteractionZone
-Panel

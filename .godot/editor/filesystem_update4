@@ -1,9 +1,6 @@
-res://Units/Enemies/Crawler/crawler_enemy.tscn
+res://Utilities/level_root.tscn
 res://Assets/PointGradient.tres
-res://Units/StateMachine/move_to_target_state_node.tscn
-res://Units/WorkerDrone/worker_drone.tscn
-res://Units/Enemies/Crawler/attack_friendly_state_node.gd
-res://Units/StateMachine/move_to_target_state_node.gd
-res://Units/actor.gd
-res://Units/Enemies/Crawler/crawler_enemy.gd
+res://Assets/default_tileset.tres
 res://Units/PlayerDrone/player_drone.tscn
+res://Components/Scenes/health_component.tscn
+res://Components/Scenes/hit_box_component.tscn

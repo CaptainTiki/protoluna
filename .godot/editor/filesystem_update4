@@ -1,6 +1,10 @@
 res://Utilities/level_root.tscn
 res://Assets/PointGradient.tres
+<<<<<<< Updated upstream
 res://Assets/default_tileset.tres
+=======
+res://Units/WorkerDrone/worker_drone.tscn
+>>>>>>> Stashed changes
 res://Units/PlayerDrone/player_drone.tscn
 res://Components/Scenes/health_component.tscn
 res://Components/Scenes/hit_box_component.tscn

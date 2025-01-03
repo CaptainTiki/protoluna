@@ -9,15 +9,14 @@ class_name Building extends Node2D
 @export var bar_label : String #this will display the cost of upgrading
 @export var bar_size : Vector2 = Vector2(100,10)
 @export var bar_offset : Vector2 = Vector2(-50,-220)
-
 @export var action_cost : int = 5
-
-@export var health : float = 30
-
+@export var max_health : float = 30.0
 @export var building_cost : float = 5.0 #how high of a priorty target are we for the AI
 
 var cost_increase: int = 2 #default - needs to be changed in init function
 var current_resources : int = 0
+
+var current_health : float
 
 func _init() -> void:
 	add_to_group("friendly")
@@ -30,3 +29,6 @@ func on_resource_filled() -> void:
 
 func get_target_cost() -> float:
 	return building_cost
+
+func notify_gamemanager():
+	GameManager.notify_building_request(self) #tell thhe game manager we need worker drones

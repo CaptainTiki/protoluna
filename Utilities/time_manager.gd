@@ -4,14 +4,16 @@ class_name TimeManager extends Node
 @export var day_duration: float = 180.0
 @export var night_duration: float = 180.0
 @export var day_color: Color = Color(1,1,1,1) # Bright and white for daytime
-@export var night_color: Color = Color(0.5,0.5,0.7,1) #dim and blueish for nighttime
+@export var night_color: Color = Color(0.55,0.55,0.75,1) #dim and blueish for nighttime
 
 
 @onready var timer: Timer = $Timer
 @onready var canvas_modulate: CanvasModulate = $"../../CanvasModulate"
 
 # Signals for day/night transitions
+@warning_ignore("unused_signal")
 signal day_started
+@warning_ignore("unused_signal")
 signal night_started
 
 # internal state variables

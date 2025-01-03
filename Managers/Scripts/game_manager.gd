@@ -1,5 +1,8 @@
 class_name Game_Manager extends Node
 
+@warning_ignore("unused_signal")
+signal building_request(building: Building)
+
 var debug_node_scene : PackedScene = preload("res://Managers/debug_node.tscn")
 var playerDronescene : PackedScene = preload("res://Units/PlayerDrone/player_drone.tscn")
 
@@ -7,6 +10,9 @@ var debug_node : Debug_Node
 var player : Player_Drone
 
 var interaction_speed : float = 1.5
+
+var worker_drones : Array[Actor] = [] #to keep track of our drones
+var worker_requests : Array[Building] = [] #queue to keep track of build / repairs
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,3 +47,12 @@ func update_debug_time(is_daytime: bool, time: String) -> void:
 	debug_node.update_time(is_daytime, time)
 func _on_timer_timeout() -> void:
 	pass # Replace with function body.
+
+func add_worker(worker : Actor) -> void:
+	worker_drones.append(worker) #add new drone to list of drones
+	pass
+
+func notify_building_request(building: Building) -> void:
+	worker_requests.append(building)
+	emit_signal("building_request", building)
+	pass

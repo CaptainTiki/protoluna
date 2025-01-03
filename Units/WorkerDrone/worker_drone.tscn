@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bibl2spaf5lnm"]
+[gd_scene load_steps=14 format=3 uid="uid://bibl2spaf5lnm"]
 
 [ext_resource type="Script" path="res://Units/WorkerDrone/worker_drone.gd" id="1_jgtm0"]
 [ext_resource type="Texture2D" uid="uid://bognrv2poasve" path="res://Assets/Sprites/Vehicles/WorkerDrone/WorkerDrone.png" id="2_bxlbm"]
 [ext_resource type="Script" path="res://Units/StateMachine/state_machine.gd" id="3_wkit2"]
 [ext_resource type="PackedScene" uid="uid://dpg00t6bm23ut" path="res://Units/StateMachine/idle_state_node.tscn" id="4_giibt"]
 [ext_resource type="PackedScene" uid="uid://bubu0n0kp0fk8" path="res://Units/StateMachine/wander_state_node.tscn" id="4_nhe2b"]
+[ext_resource type="Script" path="res://Units/StateMachine/move_to_state_node.gd" id="6_1omjk"]
 [ext_resource type="PackedScene" uid="uid://cx7hoin0moo2f" path="res://Units/unit_light.tscn" id="6_bswpp"]
+[ext_resource type="Script" path="res://Units/StateMachine/do_work_state_node.gd" id="7_50dcp"]
 
 [sub_resource type="Animation" id="Animation_wcfop"]
 length = 0.001
@@ -89,14 +91,32 @@ shape = SubResource("CapsuleShape2D_v4jw1")
 script = ExtResource("3_wkit2")
 current_state = NodePath("IdleStateNode")
 
-[node name="IdleStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("4_giibt")]
+[node name="IdleStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state", "wander_state", "build_request_state") instance=ExtResource("4_giibt")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 exit_state = NodePath("../WanderStateNode")
+wander_state = NodePath("../WanderStateNode")
+build_request_state = NodePath("../MoveToStateNode")
 
-[node name="WanderStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state") instance=ExtResource("4_nhe2b")]
+[node name="WanderStateNode" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state", "idle_state", "build_request_state") instance=ExtResource("4_nhe2b")]
 actor = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
+exit_state = NodePath("../IdleStateNode")
+idle_state = NodePath("../IdleStateNode")
+build_request_state = NodePath("../MoveToStateNode")
+
+[node name="MoveToStateNode" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state")]
+script = ExtResource("6_1omjk")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+animation_name = null
+exit_state = NodePath("../DoWorkStateNode")
+
+[node name="DoWorkStateNode" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "animator", "exit_state")]
+script = ExtResource("7_50dcp")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+animation_name = null
 exit_state = NodePath("../IdleStateNode")
 
 [node name="UnitLight" parent="." instance=ExtResource("6_bswpp")]

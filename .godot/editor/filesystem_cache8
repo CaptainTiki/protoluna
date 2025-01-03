@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1735530675
-::res://Assets/::1735531276
+::res://::1735818571
+::res://Assets/::1735531286
 default_tileset.tres::TileSet::6986601982969571129::1735530683::0::1::::<><>::uid://bggddghxxfovl::::res://Assets/lunar_surface_tile.png
 Hills1.png::CompressedTexture2D::5584166848921273874::1735531093::1735531286::1::::<><>::
 Hills2.png::CompressedTexture2D::5797625188185608116::1735531276::1735531286::1::::<><>::
@@ -64,9 +64,9 @@ deploy_hq_node.gd::GDScript::-1::1734378364::0::1::::<>Node2D<>::
 deploy_hq_node.tscn::PackedScene::5967987505576962754::1734382192::0::1::::<><>::uid://b0vgdvyeu2mbd::::res://Assets/Sprites/Buildings/Hq/HQLeftBLD.png<>res://Buildings/HQ/deploy_hq_node.gd<>uid://duwa0l8d2yrts::::res://Assets/Sprites/Buildings/Hq/HQLeftGadgets.png<>uid://j5687mde517n::::res://Assets/Sprites/Buildings/Hq/Pad.png<>uid://cuktkt2a5w5md::::res://Buildings/HQ/bld_hq.tscn<>uid://dpq8hc6183hk7::::res://Assets/Sprites/Buildings/Hq/HQRightBLD.png<>uid://bpkf8kxahsykj::::res://Assets/Sprites/Buildings/Hq/HQRightGadgets.png<>uid://bpkwfdg5sbrk0::::res://Assets/Sprites/Buildings/Hq/HqSkirt.png<>uid://bieqj57tqx8c6::::res://Assets/Sprites/Buildings/Hq/HQTower.png
 highlight_shader.gdshader::Shader::-1::1734355130::0::1::::<><>::
 ::res://Components/::1735529324
-::res://Components/Scenes/::1735530683
-health_component.tscn::PackedScene::3707657404338227356::1735530683::0::1::::<><>::res://Components/Scripts/health_component.gd
-hit_box_component.tscn::PackedScene::7220335940629556642::1735530683::0::1::::<><>::res://Components/Scripts/hit_box_component.gd
+::res://Components/Scenes/::1735532599
+health_component.tscn::PackedScene::3707657404338227356::1735532599::0::1::::<><>::res://Components/Scripts/health_component.gd
+hit_box_component.tscn::PackedScene::7220335940629556642::1735532599::0::1::::<><>::res://Components/Scripts/hit_box_component.gd
 hurt_box_component.tscn::PackedScene::5233517217187648844::1735529324::0::1::::<><>::res://Components/Scripts/hurt_box_component.gd
 ::res://Components/Scripts/::1735529324
 health_component.gd::GDScript::-1::1735529324::0::1::::HealthComponent<>Node<>::
@@ -92,9 +92,9 @@ crawler_enemy.tscn::PackedScene::1945402994185139265::1735528879::0::1::::<><>::
 flip_children_nodes.gd::GDScript::-1::1734961638::0::1::::<>Sprite2D<>::
 gun_drone.gd::GDScript::-1::1734966613::0::1::::GunDrone<>Actor<>::
 gun_drone.tscn::PackedScene::4557697498432383049::1734967822::0::1::::<><>::res://Units/GunDrone/gun_drone.gd<>uid://b6frgrrqek6cr::::res://Assets/Sprites/Vehicles/GunDrone/GunDrone.png<>res://Units/StateMachine/state_machine.gd<>uid://brjwyxi1ime1n::::res://Assets/Sprites/Vehicles/GunDrone/Gun.png<>res://Units/StateMachine/idle_state_node.gd<>uid://bubu0n0kp0fk8::::res://Units/StateMachine/wander_state_node.tscn<>uid://cx7hoin0moo2f::::res://Units/unit_light.tscn
-::res://Units/PlayerDrone/::1735530683
+::res://Units/PlayerDrone/::1735532599
 player_drone.gd::GDScript::-1::1735523289::0::1::::Player_Drone<>Actor<>::
-player_drone.tscn::PackedScene::1268040484336050955::1735530683::0::1::::<><>::res://Units/PlayerDrone/player_drone.gd<>uid://duhf62rrkm0g2::::res://Assets/Sprites/Vehicles/PlayerDrone/Drone.png<>uid://bf3yv4x2a31b7::::res://Assets/Sprites/Vehicles/PlayerDrone/DroneFlame.png<>uid://cx7hoin0moo2f::::res://Units/unit_light.tscn<>uid://bs3atttoxxd0w::::res://Components/Scenes/health_component.tscn<>uid://da4t44anvvkog::::res://Components/Scenes/hit_box_component.tscn<>uid://cgtfi8d6nfi17::::res://Components/Scenes/hurt_box_component.tscn
+player_drone.tscn::PackedScene::1268040484336050955::1735532599::0::1::::<><>::res://Units/PlayerDrone/player_drone.gd<>uid://duhf62rrkm0g2::::res://Assets/Sprites/Vehicles/PlayerDrone/Drone.png<>uid://bf3yv4x2a31b7::::res://Assets/Sprites/Vehicles/PlayerDrone/DroneFlame.png<>uid://cx7hoin0moo2f::::res://Units/unit_light.tscn<>uid://bs3atttoxxd0w::::res://Components/Scenes/health_component.tscn<>uid://da4t44anvvkog::::res://Components/Scenes/hit_box_component.tscn<>uid://cgtfi8d6nfi17::::res://Components/Scenes/hurt_box_component.tscn
 unit_light.gd::GDScript::-1::1734961638::0::1::::UnitLight<>PointLight2D<>::
 ::res://Units/Rocket/::1735523289
 lander_rocket.gd::GDScript::-1::1735523289::0::1::::<>Node2D<>::
@@ -116,7 +116,7 @@ wander_state_node.tscn::PackedScene::3793521640809810497::1734961638::0::1::::<>
 ::res://Units/WorkerDrone/::1735528879
 worker_drone.gd::GDScript::-1::1734962927::0::1::::WorkerDrone<>Actor<>::
 worker_drone.tscn::PackedScene::2950712882507526002::1735528879::0::1::::<><>::res://Units/WorkerDrone/worker_drone.gd<>uid://bognrv2poasve::::res://Assets/Sprites/Vehicles/WorkerDrone/WorkerDrone.png<>res://Units/StateMachine/state_machine.gd<>uid://dpg00t6bm23ut::::res://Units/StateMachine/idle_state_node.tscn<>uid://bubu0n0kp0fk8::::res://Units/StateMachine/wander_state_node.tscn<>uid://cx7hoin0moo2f::::res://Units/unit_light.tscn
-::res://Utilities/::1735530683
+::res://Utilities/::1735532599
 camera_2d.gd::GDScript::-1::1734961638::0::1::::<>Camera2D<>::
 camera_2d.tscn::PackedScene::294530186265195067::1734961638::0::1::::<><>::res://Utilities/camera_2d.gd
 debug_node.gd::GDScript::-1::1734961638::0::1::::Debug_Node<>Node<>::
@@ -124,7 +124,7 @@ icon.svg::CompressedTexture2D::9147987942422842817::1734961638::1735528877::1:::
 interaction_zone.gd::GDScript::-1::1734961638::0::1::::InteractionZone<>Area2D<>::
 interaction_zone.tscn::PackedScene::1640942330807654152::1734961638::0::1::::<><>::res://Utilities/interaction_zone.gd
 level_root.gd::GDScript::-1::1734961638::0::1::::<>Node2D<>::
-level_root.tscn::PackedScene::6022256445882957573::1735530683::0::1::::<><>::res://Managers/Scripts/game_manager.gd<>res://Utilities/level_root.gd<>uid://dkvhrc0k7ps7n::::res://Units/Rocket/lander_rocket.tscn<>uid://c6smkw4xpyhgb::::res://Assets/default_tileset.tres<>uid://egw4sysil36v::::res://Utilities/camera_2d.tscn<>res://Utilities/time_manager.gd<>uid://cra6486iqvwpe::::res://Buildings/HQ/deploy_hq_node.tscn<>uid://dx20wblcp6rix::::res://Buildings/building_slot_node.tscn<>uid://dqyfuhyxwhm81::::res://Buildings/Armory/deploy_armory_node.tscn
+level_root.tscn::PackedScene::6022256445882957573::1735532599::0::1::::<><>::res://Managers/Scripts/game_manager.gd<>res://Utilities/level_root.gd<>uid://dkvhrc0k7ps7n::::res://Units/Rocket/lander_rocket.tscn<>uid://c6smkw4xpyhgb::::res://Assets/default_tileset.tres<>uid://egw4sysil36v::::res://Utilities/camera_2d.tscn<>res://Utilities/time_manager.gd<>uid://cra6486iqvwpe::::res://Buildings/HQ/deploy_hq_node.tscn<>uid://couobmar5k48o::::res://Assets/Hills2.png<>uid://cltaoao64kd5k::::res://Assets/Hills1.png<>uid://dx20wblcp6rix::::res://Buildings/building_slot_node.tscn<>uid://dqyfuhyxwhm81::::res://Buildings/Armory/deploy_armory_node.tscn
 README.md::TextFile::-1::1734961638::0::1::::<><>::
 resource_fill_bar.gd::GDScript::-1::1734961638::0::1::::ResourceFillBar<>Node2D<>::
 resource_fill_bar.tscn::PackedScene::865039827373560471::1734961638::0::1::::<><>::res://Utilities/resource_fill_bar.gd<>uid://ckp7dkc2qmjaj::::res://Assets/Sprites/Utilities/bar_fill_image.png

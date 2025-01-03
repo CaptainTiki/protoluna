@@ -8,6 +8,8 @@ class_name IdleState extends StateNode
 @export var idle_time_max : float = 3.0
 
 @export var exit_state : StateNode
+@export var wander_state : StateNode
+@export var build_request_state : StateNode
 
 var timer
 
@@ -37,4 +39,7 @@ func _exit_state() -> void:
 func _process(_delta) -> void:
 	if timer.time_left <= 0:
 		_exit_state()
+	if actor.has_method("has_build_request"):
+		if actor.has_build_request():
+			exit_state = build_request_state
 	pass

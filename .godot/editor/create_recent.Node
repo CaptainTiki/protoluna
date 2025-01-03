@@ -1,9 +1,9 @@
+Node
 CanvasGroup
 Sprite2D
 Parallax2D
 CollisionShape2D
 Area2D
-Node
 Node2D
 CharacterBody2D
 Timer
@@ -12,4 +12,3 @@ CanvasModulate
 VBoxContainer
 RichTextLabel
 TextLabelPopup
-ResourceFillBar

@@ -10,6 +10,8 @@ class_name WanderState extends StateNode
 @export var wander_time_max : float = 3.0
 
 @export var exit_state : StateNode
+@export var idle_state : StateNode
+@export var build_request_state : StateNode
 
 func _ready() -> void:
 	set_process(false)
@@ -34,6 +36,10 @@ func _exit_state() -> void:
 	pass
 
 func _process(_delta) -> void:
+	if actor.has_method("has_build_request"):
+		if actor.has_build_request():
+			exit_state = build_request_state
+		pass
 	if timer.time_left <= 0:
 		_exit_state()
 	pass

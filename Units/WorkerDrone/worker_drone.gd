@@ -1,11 +1,17 @@
 class_name WorkerDrone extends Actor
 
+@onready var state_machine = $StateMachine
+
+var is_idle = true
+var build_request_target : Building
+
 func _init():
 	super._init()
 	add_to_group("friendly")
 
 func _ready() -> void:
 	GameManager.add_debug_info(self.name, str(velocity))
+	GameManager.connect("building_request",_on_build_request)
 	pass
 
 func _process(_delta):
@@ -35,3 +41,14 @@ func _physics_process(delta):
 		velocity += get_gravity()
 	
 	move_and_slide()
+
+func _on_build_request() -> void:
+	if is_idle:
+		is_idle = false
+		#change state to working
+	pass
+	
+func has_build_request() -> bool:
+	if not build_request_target == null:
+		return true
+	return false

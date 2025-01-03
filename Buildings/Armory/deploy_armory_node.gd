@@ -1,4 +1,4 @@
-extends Node2D
+extends Building
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var rootNode = $"../../Buildings"
@@ -8,6 +8,8 @@ var current_stage = 0
 
 func _ready() -> void:
 	animation_player.play("Deploy")
+	current_health = 0.0
+	notify_gamemanager()
 	pass
 
 func _process(_delta: float) -> void:
